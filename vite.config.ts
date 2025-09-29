@@ -4,8 +4,8 @@ import path from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // Remplacez 'mohamed-nlp-journey' par le nom de votre dépôt GitHub
-  base: "/mmnlp-journey/", 
+  
+  base: "/", 
   plugins: [react()],
   resolve: {
     alias: {
