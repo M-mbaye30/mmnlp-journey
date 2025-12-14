@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Globe } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -24,23 +24,22 @@ const Projects = () => {
       demoUrl: "/videos/datalake-explorer-demo.mp4"
     },
     {
-      title: "RAG Senegal – Budgetary Assistant",
-      description: "A Retrieval-Augmented Generation (RAG) application specialized in analyzing official Senegalese budget documents. This application allows users to ask questions in natural language and receive accurate answers directly sourced from the official government content.",
-      technologies: ["Python", "PyPDF2", "OpenAI", "ChromaDB,", "LangChain", "Streamlit", "all-MiniLM-L6-v2", "prompt engineering"],
+      title: "KNOW-SN RAG",
+      description: "Système de Recherche Documentaire par IA utilisant la technologie RAG pour interroger les documents officiels du Sénégal. Il combine recherche vectorielle (ChromaDB) et génération de texte (GPT-4o-mini) pour fournir des réponses précises et contextualisées.",
+      technologies: ["Python", "FastAPI", "ChromaDB", "LangChain", "OpenAI GPT-4o-mini", "Streamlit", "Sentence Transformers", "Docker"],
       category: "Generative AI Engineering",
       year: "2025",
-      githubUrl: "https://github.com/M-mbaye30/RagApplication",
-      demoUrl: "/videos/rag-senegal-demo.mp4"
+      demoUrl: "/videos/KNOW-SN RAG.webm",
+      liveUrl: "https://know-sn-rag-861961046598.europe-west1.run.app/"
     },
     {
-      title: "Named Entity Recognition for Monocolonal Antibodies",
-      description: "A Named Entity Recognition (NER) application designed to automatically extract and classify biomedical entities, including genes and alleles, from unstructured text. To achieve high precision, I trained a dedicated LSTM-CRF model and fine-tuned cutting-edge models such as GliNER, BERT, and ScispaCy. This hybrid methodology guarantees superior performance and reliability when processing complex biomedical literature",
-      technologies: ["Python", "Streamlit", "spaCy", "Pandas", "NumPy", "Matplotlib", "Seaborn", "hugging face", "scikit-learn", "TensorFlow", "Keras", "Label-Studio"],
-      category: "NLP Engineering",
+      title: "IMGT-NER-APP",
+      description: "Automated named entity extraction tool for monoclonal antibody (mAb) descriptions, specialized in WHO INN nomenclature. Uses BiLSTM-CRF models to identify heavy/light chains, species origin, and structural modifiers to support biomedical research.",
+      technologies: ["Python", "Streamlit", "BiLSTM-CRF", "spaCy", "TensorFlow", "scikit-learn", "Label-Studio"],
+      category: "Biomedical NLP",
       year: "2025",
-      githubUrl: "https://github.com/M-mbaye30/streamlit_ner_app",
-      demoUrl: "/videos/interactive-interface-demo.mp4"
-
+      demoUrl: "/videos/imgtNErAPP.webm",
+      liveUrl: "https://www.imgt.org/nerapp/"
     },
     {
       title: "Library Management System",
@@ -49,7 +48,7 @@ const Projects = () => {
       category: "Data Management",
       year: "2023",
       githubUrl: "https://github.com/M-mbaye30/myprojectsqlite",
-      demoUrl: "/videos/library-management-system-demo.mp4"
+      demoUrl: "/videos/sqlit-demo.webm"
 
     },
     {
@@ -65,64 +64,96 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-secondary/20">
+    <section id="projects" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of innovative NLP and AI solutions I've developed
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            A showcase of innovative NLP and AI solutions exploring the boundaries of technology.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="flex flex-col gap-32">
           {projects.map((project, index) => (
-            <Card key={index} className="p-6 bg-card/50 backdrop-blur-sm border-border/50 transition-smooth hover:glow-effect hover:scale-105 group flex flex-col">
-              <div className="flex-grow">
-                <div className="flex justify-between items-start mb-4">
-                  <Badge variant="outline" className="text-xs">
+            <div key={index} className={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+
+              {/* Media Section */}
+              <div className="w-full lg:w-3/5 group">
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-border/50 bg-card/50 aspect-video group-hover:shadow-primary/10 transition-all duration-500">
+                  {project.demoUrl && project.demoUrl.endsWith('.mp4') || project.demoUrl?.endsWith('.webm') ? (
+                    <video
+                      src={project.demoUrl}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      controls
+                      muted={false}
+                      loop
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-secondary/30 flex items-center justify-center group-hover:bg-secondary/40 transition-colors">
+                      <p className="text-muted-foreground font-medium">Demo coming soon</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div className="w-full lg:w-2/5 flex flex-col justify-center space-y-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Badge variant="outline" className="text-sm px-3 py-1 font-medium border-primary/20 text-primary">
                     {project.category}
                   </Badge>
-                  <span className="text-xs text-muted-foreground">{project.year}</span>
+                  <span className="text-sm text-muted-foreground font-mono">{project.year}</span>
                 </div>
-                
-                <h3 className="text-lg font-semibold mb-3 gradient-text group-hover:text-primary transition-smooth">
+
+                <h3 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                   {project.title}
                 </h3>
-                
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
-                
-                <div className="flex flex-wrap gap-1 mb-4">
+
+                <div className="flex flex-wrap gap-2 pt-2">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="text-xs">
+                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50 hover:bg-secondary transition-colors">
                       {tech}
                     </Badge>
                   ))}
                 </div>
+
+                <div className="flex flex-wrap gap-4 pt-4">
+                  {/* @ts-ignore */}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+                        <Globe className="mr-2 h-4 w-4" />
+                        Live Site
+                      </Button>
+                    </a>
+                  )}
+
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" variant="outline" className="rounded-full px-8 border-primary/20 hover:bg-primary/5 hover:text-primary transition-all">
+                        <Github className="mr-2 h-4 w-4" />
+                        View Code
+                      </Button>
+                    </a>
+                  )}
+
+                  {project.demoUrl && !project.demoUrl.endsWith('.mp4') && !project.demoUrl.endsWith('.webm') && (
+                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" variant="outline" className="rounded-full px-8">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Demo
+                      </Button>
+                    </a>
+                  )}
+                </div>
               </div>
-              
-              <div className="flex space-x-2 mt-auto">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                    <Button size="sm" variant="outline" className="w-full">
-                      <Github className="mr-2 h-3 w-3" />
-                      Code
-                    </Button>
-                  </a>
-                )}
-                {project.demoUrl && (
-                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                    <Button size="sm" className="w-full">
-                      <ExternalLink className="mr-2 h-3 w-3" />
-                      Demo
-                    </Button>
-                  </a>
-                )}
-              </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
