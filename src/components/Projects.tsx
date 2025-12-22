@@ -6,30 +6,12 @@ import { ExternalLink, Github, Globe } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: "Automatic Sentiment Classification",
-      description: "This repository brings together several machine learning projects covering different areas: classification, regression, clustering, and data analysis. Each project demonstrates the application of ML techniques on real datasets with a comprehensive methodological approach.",
-      technologies: ["Python", "spaCy", "NLTK", "scikit-learn", "Matplotlib", "NumPy", "Pandas", "Jupyter Notebook"],
-      category: "Machine Learning and NLP",
-      year: "2024",
-      githubUrl: "https://github.com/M-mbaye30/ML_Project/tree/master",
-      demoUrl: "/videos/sentiment-classification-demo.mp4"
-    },
-    {
-      title: "DataLake Explorer Project",
-      description: "DataLake Explorer is a data management and exploration project designed for data lakes. The system automates the ingestion of documents from various sources, extracts metadata, and organizes them in a centralized catalog. The web interface, built with Streamlit, offers advanced search and analysis tools to simplify access to vast collections of data and make them directly usable.",
-      technologies: ["Python", "Streamlit", "PyPDF2", "BeautifulSoup", "seaborn"],
-      category: "Data Engineering",
-      year: "2024",
-      githubUrl: "https://github.com/M-mbaye30/DataLakeProject/tree/master",
-      demoUrl: "/videos/datalake-explorer-demo.mp4"
-    },
-    {
       title: "KNOW-SN RAG",
       description: "Système de Recherche Documentaire par IA utilisant la technologie RAG pour interroger les documents officiels du Sénégal. Il combine recherche vectorielle (ChromaDB) et génération de texte (GPT-4o-mini) pour fournir des réponses précises et contextualisées.",
       technologies: ["Python", "FastAPI", "ChromaDB", "LangChain", "OpenAI GPT-4o-mini", "Streamlit", "Sentence Transformers", "Docker"],
       category: "Generative AI Engineering",
       year: "2025",
-      demoUrl: "/videos/KNOW-SN RAG.webm",
+      demoUrl: "/videos/KNOW-SN RAG.mp4",
       liveUrl: "https://know-sn-rag-861961046598.europe-west1.run.app/"
     },
     {
@@ -38,7 +20,7 @@ const Projects = () => {
       technologies: ["Python", "Streamlit", "BiLSTM-CRF", "spaCy", "TensorFlow", "scikit-learn", "Label-Studio"],
       category: "Biomedical NLP",
       year: "2025",
-      demoUrl: "/videos/imgtNErAPP.webm",
+      demoUrl: "/videos/imgtNErAPP.mp4",
       liveUrl: "https://www.imgt.org/nerapp/"
     },
     {
@@ -48,18 +30,24 @@ const Projects = () => {
       category: "Data Management",
       year: "2023",
       githubUrl: "https://github.com/M-mbaye30/myprojectsqlite",
-      demoUrl: "/videos/sqlit-demo.webm"
-
+      demoUrl: "/videos/sqlit-demo.mp4"
     },
     {
-      title: "NLP Tech Watch Agent",
-      description: "An Artificial Intelligence agent designed to automate the monitoring and analysis of NLP advancements. It crawls the web to extract relevant content and generates structured tech watch reports, thus providing a fast and precise synthesis of the latest technological innovations.",
-      technologies: ["Streamlit", "Python", "bs4,", "duckduckgo", "OpenAI API", "Docker"],
+      title: "AI Orchestrator",
+      description: "A self-hosted, autonomous multi-agent system designed for document analysis and strategic reasoning. It leverages local LLMs (via Ollama) to ensure data sovereignty and employs an Agentic Architecture where specialized agents (Analysis, Extraction, Reasoning, Validation) collaborate dynamically.",
+      technologies: ["Python", "Ollama", "Llama 3.2", "Streamlit", "PyPDF", "Agentic Framework"],
       category: "Generative AI Engineering",
       year: "2025",
-      githubUrl: "https://github.com/M-mbaye30/Perso_AI_AGENT",
-      demoUrl: "/videos/tech-watch-agent-demo.mp4"
-
+      githubUrl: "https://github.com/M-mbaye30/Perso_AI_AGENT"
+    },
+    {
+      title: "UniRec-SN (AI University Recommender)",
+      description: "AI-driven university recommendation system for Senegal. Features semantic search via pgvector, automated PDF profile analysis, and a hybrid scoring algorithm. Powered by synthetic datasets generated with NVIDIA NeMo Data Designer for robust model training.",
+      technologies: ["Python", "FastAPI", "Docker", "GCP", "PostgreSQL", "pgvector", "Sentence-Transformers", "React"],
+      category: "AI & Recommendation Systems",
+      year: "2025",
+      demoUrl: "/videos/sysrec.mp4",
+      liveUrl: "https://rec-sys-frontend-523522346470.europe-west1.run.app/"
     }
   ];
 
@@ -89,6 +77,8 @@ const Projects = () => {
                       controls
                       muted={false}
                       loop
+                      preload="metadata"
+                      playsInline
                     />
                   ) : (
                     <div className="w-full h-full bg-secondary/30 flex items-center justify-center group-hover:bg-secondary/40 transition-colors">
