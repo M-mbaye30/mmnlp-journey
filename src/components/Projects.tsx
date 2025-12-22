@@ -64,87 +64,97 @@ const Projects = () => {
         </div>
 
         <div className="flex flex-col gap-32">
-          {projects.map((project, index) => (
-            <div key={index} className={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-
-              {/* Media Section */}
-              <div className="w-full lg:w-3/5 group">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-border/50 bg-card/50 aspect-video group-hover:shadow-primary/10 transition-all duration-500">
-                  {project.demoUrl && project.demoUrl.endsWith('.mp4') || project.demoUrl?.endsWith('.webm') ? (
-                    <video
-                      src={project.demoUrl}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                      controls
-                      muted={false}
-                      loop
-                      preload="metadata"
-                      playsInline
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-secondary/30 flex items-center justify-center group-hover:bg-secondary/40 transition-colors">
-                      <p className="text-muted-foreground font-medium">Demo coming soon</p>
+          {projects.map((project, index) => {
+            const hasDemo = !!project.demoUrl;
+            return (
+              <div
+                key={index}
+                className={`flex flex-col gap-12 items-center ${hasDemo
+                    ? `lg:flex-row ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`
+                    : 'max-w-3xl mx-auto text-center'
+                  }`}
+              >
+                {/* Media Section */}
+                {hasDemo && (
+                  <div className="w-full lg:w-3/5 group">
+                    <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-border/50 bg-card/50 aspect-video group-hover:shadow-primary/10 transition-all duration-500">
+                      {(project.demoUrl?.endsWith('.mp4') || project.demoUrl?.endsWith('.webm')) ? (
+                        <video
+                          src={project.demoUrl}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          controls
+                          muted={false}
+                          loop
+                          preload="metadata"
+                          playsInline
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-secondary/30 flex items-center justify-center group-hover:bg-secondary/40 transition-colors">
+                          <p className="text-muted-foreground font-medium">Demo coming soon</p>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              </div>
+                  </div>
+                )}
 
-              {/* Content Section */}
-              <div className="w-full lg:w-2/5 flex flex-col justify-center space-y-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <Badge variant="outline" className="text-sm px-3 py-1 font-medium border-primary/20 text-primary">
-                    {project.category}
-                  </Badge>
-                  <span className="text-sm text-muted-foreground font-mono">{project.year}</span>
-                </div>
-
-                <h3 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                  {project.title}
-                </h3>
-
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="bg-secondary/50 hover:bg-secondary transition-colors">
-                      {tech}
+                {/* Content Section */}
+                <div className={`w-full ${hasDemo ? 'lg:w-2/5' : 'w-full'} flex flex-col justify-center space-y-6`}>
+                  <div className={`flex items-center gap-3 mb-2 ${!hasDemo ? 'justify-center' : ''}`}>
+                    <Badge variant="outline" className="text-sm px-3 py-1 font-medium border-primary/20 text-primary">
+                      {project.category}
                     </Badge>
-                  ))}
-                </div>
+                    <span className="text-sm text-muted-foreground font-mono">{project.year}</span>
+                  </div>
 
-                <div className="flex flex-wrap gap-4 pt-4">
-                  {/* @ts-ignore */}
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
-                        <Globe className="mr-2 h-4 w-4" />
-                        Live Site
-                      </Button>
-                    </a>
-                  )}
+                  <h3 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                    {project.title}
+                  </h3>
 
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" variant="outline" className="rounded-full px-8 border-primary/20 hover:bg-primary/5 hover:text-primary transition-all">
-                        <Github className="mr-2 h-4 w-4" />
-                        View Code
-                      </Button>
-                    </a>
-                  )}
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
 
-                  {project.demoUrl && !project.demoUrl.endsWith('.mp4') && !project.demoUrl.endsWith('.webm') && (
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" variant="outline" className="rounded-full px-8">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Demo
-                      </Button>
-                    </a>
-                  )}
+                  <div className={`flex flex-wrap gap-2 pt-2 ${!hasDemo ? 'justify-center' : ''}`}>
+                    {project.technologies.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="secondary" className="bg-secondary/50 hover:bg-secondary transition-colors">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className={`flex flex-wrap gap-4 pt-4 ${!hasDemo ? 'justify-center' : ''}`}>
+                    {/* @ts-ignore */}
+                    {project.liveUrl && (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+                          <Globe className="mr-2 h-4 w-4" />
+                          Live Site
+                        </Button>
+                      </a>
+                    )}
+
+                    {project.githubUrl && (
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Button size="lg" variant="outline" className="rounded-full px-8 border-primary/20 hover:bg-primary/5 hover:text-primary transition-all">
+                          <Github className="mr-2 h-4 w-4" />
+                          View Code
+                        </Button>
+                      </a>
+                    )}
+
+                    {project.demoUrl && !project.demoUrl.endsWith('.mp4') && !project.demoUrl.endsWith('.webm') && (
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                        <Button size="lg" variant="outline" className="rounded-full px-8">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Demo
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -4,32 +4,46 @@ import { Badge } from '@/components/ui/badge';
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Deep Learning & NLP",
+      skills: [
+        { name: "Transformers (Hugging Face)", expertise: "Advanced", icon: "🤗" },
+        { name: "LLMs & RAG", expertise: "Advanced", icon: "🧠" },
+        { name: "spaCy", expertise: "Advanced", icon: "🕸️" },
+        { name: "LangChain", expertise: "Advanced", icon: "🔗" },
+        { name: "vLLM & Ollama", expertise: "Intermediate", icon: "🦙" },
+        { name: "Whisper & Wav2Vec", expertise: "Intermediate", icon: "🎤" },
+      ]
+    },
+    {
+      title: "ML & Core Programming",
       skills: [
         { name: "Python", expertise: "Advanced", icon: "🐍" },
         { name: "SQL", expertise: "Advanced", icon: "🗄️" },
-        { name: "JavaScript", expertise: "Beginner", icon: "⚡" },
-        { name: "R", expertise: "Pre-Intermediate", icon: "📊" },
+        { name: "scikit-learn", expertise: "Advanced", icon: "🔬" },
+        { name: "PyTorch", expertise: "Intermediate", icon: "🔥" },
+        { name: "Pandas & NumPy", expertise: "Advanced", icon: "🐼" },
       ]
     },
     {
-      title: "NLP & ML Frameworks",
+      title: "MLOps & Deployment",
       skills: [
-        { name: "spaCy", expertise: "Advanced", icon: "🕸️" },
-        { name: "Hugging Face", expertise: "Advanced", icon: "🤗" },
-        { name: "scikit-learn", expertise: "Intermediate", icon: "🔬" },
-        { name: "TensorFlow", expertise: "Intermediate", icon: "🔥" },
-        { name: "PyTorch", expertise: "Intermediate", icon: "⚡" },
-      ]
-    },
-    {
-      title: "Tools & Technologies",
-      skills: [
-        { name: "Git", expertise: "Intermediate", icon: "🌿" },
         { name: "Docker", expertise: "Intermediate", icon: "🐳" },
-        { name: "Streamlit", expertise: "Intermediate", icon: "🚀" },
+        { name: "FastAPI & Flask", expertise: "Advanced", icon: "⚡" },
+        { name: "GCP", expertise: "Intermediate", icon: "☁️" },
+        { name: "AWS", expertise: "Intermediate", icon: "📦" },
+        { name: "Git & GitHub", expertise: "Advanced", icon: "🌿" },
+        { name: "CI/CD", expertise: "Intermediate", icon: "🔄" },
+        { name: "Streamlit", expertise: "Advanced", icon: "🚀" },
+        { name: "Linux", expertise: "Advanced", icon: "🐧" },
+      ]
+    },
+    {
+      title: "Data Engineering",
+      skills: [
+        { name: "PostgreSQL", expertise: "Advanced", icon: "🐘" },
+        { name: "ChromaDB", expertise: "Advanced", icon: "📦" },
         { name: "MongoDB", expertise: "Advanced", icon: "🍃" },
-        { name: "MySQL", expertise: "Advanced", icon: "🐘" },
+        { name: "MySQL", expertise: "Advanced", icon: "🐬" },
       ]
     },
     {
@@ -64,7 +78,7 @@ const Skills = () => {
             Technical proficiencies and methodologies I use to build intelligent solutions
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {skillCategories.map((category, index) => (
             <Card key={index} className="p-6 bg-card/50 backdrop-blur-sm border-border/50 transition-smooth hover:glow-effect">
@@ -76,9 +90,9 @@ const Skills = () => {
                       <span className="text-2xl">{skill.icon}</span>
                       <span className="text-foreground font-medium group-hover:text-primary transition-smooth">{skill.name}</span>
                     </div>
-                    <Badge 
-                      variant={skill.expertise === 'Expert' || skill.expertise === 'Native' ? 'default' : 
-                              skill.expertise === 'Advanced' ? 'secondary' : 'outline'}
+                    <Badge
+                      variant={skill.expertise === 'Expert' || skill.expertise === 'Native' ? 'default' :
+                        skill.expertise === 'Advanced' ? 'secondary' : 'outline'}
                       className="text-xs font-medium"
                     >
                       {skill.expertise}
@@ -89,7 +103,7 @@ const Skills = () => {
             </Card>
           ))}
         </div>
-        
+
 
       </div>
     </section>

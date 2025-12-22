@@ -21,60 +21,60 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
-      
+
       <div className="container mx-auto px-4 z-10">
         <div className="text-center mb-12">
           <div className="mb-8 animate-float">
             <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-primary p-1 animate-glow">
-              <img 
-                src="/profile-photo.png" 
-                alt="Mouhamed Mbaye" 
+              <img
+                src="/profile-photo.png"
+                alt="Mouhamed Mbaye"
                 className="w-full h-full rounded-full object-cover"
               />
             </div>
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Hi, I'm <span className="gradient-text">Mouhamed</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
             NLP Engineer
           </p>
-          
+
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Passionate about Text Mining and AI. 
+            Passionate about Text Mining and AI.
             I explore the intersection of language and technology to build innovative solutions, from text analysis to model training.
           </p>
-          
+
           <div className="flex justify-center space-x-4 mb-12">
-            <a href= "mailto: mouhamedmbaye371@gmail.com" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="glow-effect transition-smooth hover:scale-105">
-              <Mail className="mr-2 h-5 w-5" />
-              Contact Me
-            </Button>
-          </a>
-          <a href= "https://github.com/M-mbaye30" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="lg" className="transition-smooth hover:scale-105">
-              <Github className="mr-2 h-5 w-5" />
-              GitHub
-            </Button>
-          </a>
-          <a href= "https://www.linkedin.com/in/mouhamed-mbaye-nlp-tal/" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="lg" className="transition-smooth hover:scale-105">
-              <Linkedin className="mr-2 h-5 w-5" />
-              LinkedIn
-            </Button>
-          </a>
-            <a href="/mouhamed-mbaye-cv.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="mailto: mouhamedmbaye371@gmail.com" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="glow-effect transition-smooth hover:scale-105">
+                <Mail className="mr-2 h-5 w-5" />
+                Contact Me
+              </Button>
+            </a>
+            <a href="https://github.com/M-mbaye30" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="transition-smooth hover:scale-105">
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
+              </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/mouhamed-mbaye-nlp-tal/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="transition-smooth hover:scale-105">
+                <Linkedin className="mr-2 h-5 w-5" />
+                LinkedIn
+              </Button>
+            </a>
+            <a href="/CV - Mouhamed MBAYE - IA_ML.pdf" target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="transition-smooth hover:scale-105">
                 <FileText className="mr-2 h-5 w-5" />
                 View CV
               </Button>
-          </a>
+            </a>
           </div>
         </div>
-        
+
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {stats.map((stat, index) => (
@@ -85,11 +85,11 @@ const Hero = () => {
             </Card>
           ))}
         </div>
-        
+
         {/* Scroll indicator */}
         <div className="text-center">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={scrollToAbout}
             className="animate-bounce transition-smooth hover:text-primary"
           >

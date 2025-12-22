@@ -13,11 +13,11 @@ const Education = () => {
       type: "formation"
     },
     {
-      degree: "Master II - Computational Linguistic",
+      degree: "Master II - Data Science-NLP",
       institution: "Université Mohammed V, Rabat, Maroc",
       year: "2024",
       status: "Completed",
-      description: "Specialized IA with focus on computational linguistic.",
+      description: "Specialized Data Science with focus on NLP.",
       type: "formation"
     },
     {
